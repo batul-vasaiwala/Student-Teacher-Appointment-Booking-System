@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Appointment</title>
+  <link rel="stylesheet" href="bookappointment.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+  <script src="../public/firebase-config.js"></script>
+  <script src="bookappoinment.js" defer></script>
+
+</head>
+<body>
+  <!--navbar-->
+  <nav>
+    <div class="navbar">
+      <div class="app-name">StudyPal</div>
+      <button class="hamburger">
+        <i class="fa fa-bars"></i>
+      </button>
+      
+      <ul class="menu" id="nav-links">
+        <li><a href="studentprofile.html">My Profile</a></li>
+        <li><a href="student_history.html">History of Appointments</a></li>
+        <li><a href="bookappointment.html">Book an Appointment</a></li>
+        <li><a href="../public/index.html">Dashboard</a></li>
+        <li><a href="#" id="logout">Logout</a></li>
+      </ul>
+      
+    </div>
+  </nav>
+  <!--end navbar-->
+  
+  
+  <h2 id="book">Book an Appointment with a Teacher</h2>
+  
+  <form id="appointmentForm">
+    <label for="teacher">Select Teacher:</label>
+    <select id="teacher" name="teacher" required>
+      <!-- Populate with teachers from Firebase -->
+    </select>
+
+    <label for="date">Select Date:</label>
+    <input type="date" id="date" name="date" required>
+
+    <label for="time">Select Time:</label>
+    <input type="time" id="time" name="time" required>
+
+    <label for="description">Description of Appointment:</label>
+    <textarea id="description" name="description" rows="4" placeholder="Describe the topic or reason for the appointment" required></textarea>
+    
+    <button type="submit">Book Appointment</button>
+  </form>
+  
+  <div id="confirmationMessage"></div>
+  <script>
+    document.querySelector('.hamburger').addEventListener('click', function() {
+    const menu = document.querySelector('.menu');
+    menu.classList.toggle('menu-active');
+});
+
+
+</script>
+  
+</body>
+</html>

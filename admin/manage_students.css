@@ -1,0 +1,203 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffcc33, #ff33cc);
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #080808;
+    margin-bottom: 20px;
+    font-size: 35px;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #090909;
+    color: rgb(246, 249, 65);
+}
+
+td {
+    color: #333;
+}
+
+/* Form Styles */
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+form input,select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+form button {
+    padding: 10px 20px;
+    background-color: #f2f23c;
+    border: solid rgb(0, 0, 0);
+    border-radius: 4px;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button:hover {
+    background-color: #44cd44;
+}
+
+/* Button Styles */
+button {
+    padding: 8px 16px;
+    margin: 0 4px;
+    border: none;
+    background-color: #f2f23c;
+    color: rgb(19, 18, 18);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #44cd44;
+}
+
+/* Message Styles */
+#message {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: green;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 28px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    table th, table td {
+        padding: 8px;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    form input {
+        padding: 8px;
+    }
+
+    form button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+
+    button {
+        padding: 8px 14px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    table th, table td {
+        padding: 3px;
+    }
+
+    form {
+        padding: 10px;
+    }
+
+    form input {
+        padding: 6px;
+    }
+
+    form button {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+
+    button {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+}
+
+/* Further Customizations for Ultra-Small Screens */
+@media (max-width: 360px) {
+    h2 {
+        font-size: 20px;
+    }
+
+    form {
+        padding: 8px;
+    }
+
+    form input {
+        padding: 5px;
+        font-size: 14px;
+    }
+
+    form button {
+        padding: 5px 10px;
+        font-size: 10px;
+    }
+
+    button {
+        padding: 5px 10px;
+        font-size: 10px;
+    }
+
+    table {
+        font-size: 10px;
+    }
+
+    table th, table td {
+        padding: 4px;
+    }
+}

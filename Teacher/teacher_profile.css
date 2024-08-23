@@ -1,0 +1,255 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and global styles */
+body {
+    font-family: Arial, sans-serif;
+    background:linear-gradient(135deg, #ffcc33, #ff33cc);
+    color: #333;
+    animation: fadeIn 1s ease-in;
+}
+
+/* Navbar styles */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    background-color: #040404;
+    box-shadow: 3px 3px 10px #1c4f82;
+    position: relative;
+    z-index: 2;
+  
+  }
+  
+  .navbar .app-name {
+    font-size: 40px;
+    padding: 10px 20px;
+    font-family: 'Satisfy', cursive;
+    color:yellow
+  }
+  
+  /* Menu Styles */
+  .navbar .menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navbar .menu li {
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+  
+  .navbar .menu li a {
+    text-decoration: none;
+    color: #fbf8f8;
+    text-transform: uppercase;
+  }
+  
+  .navbar .menu li a:hover {
+    color: rgb(239, 239, 246);
+    background-color: rgb(26, 25, 25);
+    padding: 2px;
+    text-decoration: underline;
+  }
+  
+  /* Hamburger Icon Styles */
+  .navbar .hamburger {
+    display: none; /* Hidden by default */
+    font-size: 20px;
+    color: #050504;
+    cursor: pointer;
+    background-color: #f4e56e;
+    z-index: 2;
+  }
+  
+  /*========================Media Queries=========================*/
+  @media (max-width: 768px) {
+    /* Show hamburger icon in mobile view */
+    .navbar {
+      width:100vw;
+    }
+    .navbar .hamburger {
+      display: block;
+    }
+  
+    /* Hide menu by default on smaller screens */
+    .navbar .menu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+      background-color: #0a0a0a;
+      color: white;
+      position: absolute;
+      top: 60px; /* Adjust this based on your navbar height */
+      left: 0;
+      box-shadow: 3px 3px 10px #1c4f82;
+    }
+  
+    /* Show the menu when active */
+    .navbar .menu.menu-active {
+      display: flex;
+    }
+  
+    .navbar .menu li {
+      width: 100%;
+      padding: 15px 0;
+      font-size: 20px;
+    }
+  }
+  
+  
+/* Appointment
+/* Profile section styles */
+#profile {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 2rem auto;
+    background: linear-gradient(to bottom right, white,grey);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    border: 2px solid #df27dc; /* Added border */
+    animation: fadeIn 1s ease-in;
+}
+
+#profile h2 {
+    font-size:40px;
+    margin-bottom: 1rem;
+    color: #232323;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#teacherProfile {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-size: 30px;
+}
+
+.profile-info {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+}
+
+.profile-info:hover {
+    background-color: #f1f1f1;
+}
+
+.profile-info:last-child {
+    border-bottom: none;
+}
+
+.profile-info h3 {
+    font-size:30px;
+    margin-bottom: 0.5rem;
+}
+
+.profile-info p {
+    font-size:50px;
+    line-height: 1.5;
+}
+/* Edit Profile Button Styles */
+#profile {
+    padding: 20px;
+  }
+  
+  #profileInfo {
+    margin-bottom: 20px;
+  }
+  
+  #editSection {
+    margin-top: 20px;
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #ea42d1;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #413bb2;
+  }
+  
+  form {
+    margin-top: 20px;
+  }
+  
+  form label {
+    display: block;
+    margin-top: 10px;
+  }
+  
+  form input,
+  form select,
+  form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav li {
+        margin: 0.5rem 0;
+    }
+
+    nav .app-name {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    #profile {
+        padding: 1rem;
+    }
+
+    #profile h2 {
+        font-size: 1.5rem;
+    }
+
+    #teacherProfile h3 {
+        font-size: 1.1rem;
+    }
+}

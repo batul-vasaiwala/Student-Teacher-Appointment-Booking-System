@@ -1,0 +1,168 @@
+/* Navbar styling */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    background-color: #040404;
+    box-shadow: 3px 3px 10px #1c4f82;
+    position: relative;
+    z-index: 2;
+  
+  }
+  
+  .navbar .app-name {
+    font-size: 40px;
+    padding: 10px 20px;
+    font-family: 'Satisfy', cursive;
+    color:yellow
+  }
+  
+  /* Menu Styles */
+  .navbar .menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navbar .menu li {
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+  
+  .navbar .menu li a {
+    text-decoration: none;
+    color: #fbf8f8;
+    text-transform: uppercase;
+  }
+  
+  .navbar .menu li a:hover {
+    color: rgb(239, 239, 246);
+    background-color: rgb(26, 25, 25);
+    padding: 2px;
+    text-decoration: underline;
+  }
+  
+  /* Hamburger Icon Styles */
+  .navbar .hamburger {
+    display: none; /* Hidden by default */
+    font-size: 20px;
+    color: #050504;
+    cursor: pointer;
+    background-color: #f4e56e;
+    z-index: 2;
+  }
+  
+  /*========================Media Queries=========================*/
+  @media (max-width: 768px) {
+    /* Show hamburger icon in mobile view */
+    .navbar {
+      width:100vw;
+    }
+    .navbar .hamburger {
+      display: block;
+    }
+  
+    /* Hide menu by default on smaller screens */
+    .navbar .menu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+      background-color: #0a0a0a;
+      color: white;
+      position: absolute;
+      top: 60px; /* Adjust this based on your navbar height */
+      left: 0;
+      box-shadow: 3px 3px 10px #1c4f82;
+    }
+  
+    /* Show the menu when active */
+    .navbar .menu.menu-active {
+      display: flex;
+    }
+  
+    .navbar .menu li {
+      width: 100%;
+      padding: 15px 0;
+      font-size: 20px;
+    }
+  }
+  
+  
+/* Appointments Section */
+body{
+    background:linear-gradient(135deg, #ffcc33, #ff33cc);
+}
+#appointments {
+    padding-top: 80px;
+    margin: 20px auto;
+    max-width: 1000px;
+    text-align: center;
+    
+}
+
+h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #333;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#appointmentsList {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+#appointmentsList ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#appointmentsList li {
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#appointmentsList li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+#appointmentsList li strong {
+    color: #555;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 30px;
+}
+
+#appointmentsList li span {
+    font-size: 20px;
+    color: #777;
+}
+
+button {
+    background-color: #4facfe;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: #328be9;
+}

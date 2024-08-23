@@ -1,0 +1,196 @@
+/* student_history.css */
+
+/* Reset default margins and paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background:linear-gradient(135deg, #ffcc33 0%, #ff33cc 100%);
+    color: #333;
+    line-height: 1.6;
+    
+}
+
+/* Navbar styling */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    background-color: #040404;
+
+    
+    box-shadow: 3px 3px 10px #1c4f82;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  
+  }
+  
+  .navbar .app-name {
+    font-size: 40px;
+    padding: 10px 20px;
+    font-family: 'Satisfy', cursive;
+    color:yellow
+  }
+  
+  /* Menu Styles */
+  .navbar .menu {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .navbar .menu li {
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+  
+  .navbar .menu li a {
+    text-decoration: none;
+    color: #fbf8f8;
+    text-transform: uppercase;
+  }
+  
+  .navbar .menu li a:hover {
+    color: rgb(239, 239, 246);
+    background-color: rgb(26, 25, 25);
+    padding: 2px;
+    text-decoration: underline;
+  }
+  
+  /* Hamburger Icon Styles */
+  .navbar .hamburger {
+    display: none; /* Hidden by default */
+    font-size: 30px;
+    color: #050504;
+    cursor: pointer;
+    background-color: #f4e56e;
+    z-index: 2;
+  }
+  
+  /*========================Media Queries=========================*/
+  @media (max-width: 768px) {
+    /* Show hamburger icon in mobile view */
+    .navbar {
+      width:100vw;
+    }
+    .navbar .hamburger {
+      display: block;
+    }
+  
+    /* Hide menu by default on smaller screens */
+    .navbar .menu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+      background-color: #0a0a0a;
+      color: white;
+      position: absolute;
+      top: 60px; /* Adjust this based on your navbar height */
+      left: 0;
+      box-shadow: 3px 3px 10px #1c4f82;
+    }
+  
+    /* Show the menu when active */
+    .navbar .menu.menu-active {
+      display: flex;
+    }
+  
+    .navbar .menu li {
+      width: 100%;
+      padding: 15px 0;
+      font-size: 20px;
+    }
+  }
+  
+  
+/* Main section styling */
+section#history {
+    padding: 100px 20px 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+section#history h2 {
+    font-size: 28px;
+    color: #01060c;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Appointment history styling */
+#appointmentHistory ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+#appointmentHistory ul li {
+    background:linear-gradient(90deg,white,grey);
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#appointmentHistory ul li strong {
+    font-size: 18px;
+    color: #090a0a;
+}
+
+#appointmentHistory ul li span {
+    display: block;
+    margin: 5px 0;
+    color: #555;
+}
+/* Clear History Button */
+#clearHistoryBtn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #151212;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+#clearHistoryBtn:hover {
+    background-color: #c0392b;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul li {
+        margin-bottom: 10px;
+    }
+
+    section#history {
+        padding: 80px 10px 20px;
+    }
+
+    #appointmentHistory ul li {
+        padding: 10px;
+    }
+}

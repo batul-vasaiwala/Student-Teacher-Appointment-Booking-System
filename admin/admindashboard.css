@@ -1,0 +1,76 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffcc33, #ff33cc); /* Adjusted gradient */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    min-height: 100vh; 
+}
+
+h1 {
+    color: #080808;
+    margin-bottom: 30px;
+    font-size: 36px;
+}
+
+/* Card Container Styles */
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background-color: #fff;
+    border: 2px solid #ddd; /* Border for cards */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 250px;
+    padding: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: solid rgb(239, 47, 191);
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card h2 {
+    margin: 0 0 10px;
+    color: #333;
+}
+
+.card p {
+    margin: 0;
+    color: #666;
+}
+
+/* Logout Card Styles */
+.logout-card {
+    background-color: #fefbfb;
+    border: 2px solid #ff1a1a; 
+    color: #fff;
+}
+
+.logout-card:hover {
+    background-color: #ff1a1a;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 300px;
+    }
+}

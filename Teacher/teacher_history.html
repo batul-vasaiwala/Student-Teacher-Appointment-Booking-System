@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment History</title>
+    <link rel="stylesheet" href="teacher_history.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+    <script src="../public/firebase-config.js"></script>
+    <script src="teacher_history.js" defer></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="navbar">
+          <div class="app-name">StudyPal</div>
+          <button class="hamburger">
+            <i class="fa fa-bars"></i>
+          </button>
+          <ul class="menu">
+            <li><a href="teacher_profile.html">My Profile</a></li>
+            <li><a href="pending_appointments.html">Pending Appointments</a></li>
+            <li><a href="teacher_history.html">Appointment History</a></li>
+            <li><a href="../public/index.html">Dashboard</a></li>
+      <li><a href="#" id="logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <section id="history">
+        <h2>Appointment History</h2>
+        <div id="appointmentHistory">
+            <!-- Appointment history will be populated here -->
+        </div>
+        
+        <!-- Clear History Button -->
+        <button id="clearHistoryBtn">Clear History</button>
+    </section>
+    <script>
+        document.querySelector('.hamburger').addEventListener('click', function() {
+        const menu = document.querySelector('.menu');
+        menu.classList.toggle('menu-active');
+    });
+    </script>
+</body>
+</html>

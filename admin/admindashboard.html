@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admindashboard.css">
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <!-- Firebase Authentication -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <!-- Firebase Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <!-- Firebase configuration -->
+    <script src="../public/firebase-config.js"></script>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    
+    <div class="card-container">
+        <div class="card" id="manageAppointments" onclick="window.location.href='manage_appointments.html'">
+            <h2>Manage Appointments</h2>
+            <p>View, approve, reject, or delete appointments.</p>
+        </div>
+        <div class="card" id="manageStudents" onclick="window.location.href='manage_students.html'">
+            <h2>Manage Students</h2>
+            <p>Add, remove, or edit student records.</p>
+        </div>
+        <div class="card" id="manageTeachers"onclick="window.location.href='manage_teachers.html'" >
+            <h2>Manage Teachers</h2>
+            <p>Add, remove, or edit teacher records.</p>
+        </div>
+        <div class="card logout-card" id="logout">
+            <h2>Logout</h2>
+            <p>Sign out of the admin account.</p>
+        </div>
+    </div>
+    <script>
+        // Logout
+document.getElementById('logout').addEventListener('click', function () {
+    firebase.auth().signOut().then(() => {
+        window.location.href = 'adminlogin.html'; // Redirect to login page after logout
+    }).catch((error) => {
+        console.error('Error during logout:', error);
+    });
+});
+
+    </script>
+
+    
+</body>
+</html>

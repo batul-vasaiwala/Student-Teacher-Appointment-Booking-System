@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Profile</title>
+    <link rel="stylesheet" href="teacher_profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+    <script src="../public/firebase-config.js"></script>
+    <script src="teacher_profile.js" defer></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+      <div class="navbar">
+        <div class="app-name">StudyPal</div>
+        <button class="hamburger">
+          <i class="fa fa-bars"></i>
+        </button>
+        <ul class="menu">
+            <li><a href="teacher_profile.html">My Profile</a></li>
+            <li><a href="pending_appointments.html">Pending Appointments</a></li>
+            <li><a href="teacher_history.html">Appointment History</a></li>
+            <li><a href="../public/index.html">Dashboard</a></li>
+      <li><a href="#" id="logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <section id="profile">
+        <h2>My Profile</h2>
+        <div id="teacherProfile">
+            <!-- Teacher profile info will be populated here -->
+        </div>
+        <div id="profileInfo">
+            <!-- Teacher info will be populated here -->
+          </div>
+          <div id="editSection" style="display: block;">
+            <button id="editProfile">Edit Profile</button>
+            <form id="profileForm" style="display: none;">
+              <label for="fullName">Full Name:</label>
+              <input type="text" id="fullName" name="fullName" required>
+      
+              <label for="email">Email:</label>
+              <input type="email" id="email" name="email" required>
+      
+              <label for="department">Department:</label>
+              <select id="department" name="department" required>
+                <option value="" disabled selected>Select your department</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+                <option value="Electrical Engineering">Electrical Engineering</option>
+                <option value="Business Administration">Business Administration</option>
+                <option value="Humanities">Humanities</option>
+                <option value="Sciences">Sciences</option>
+                <option value="Arts">Arts</option>
+            </select>
+            
+      
+              <button type="submit">Save Changes</button>
+              <button type="button" id="cancelEdit">Cancel</button>
+            </form>
+          </div>
+    </section>
+    <script>
+      document.querySelector('.hamburger').addEventListener('click', function() {
+      const menu = document.querySelector('.menu');
+      menu.classList.toggle('menu-active');
+  });
+  </script>
+</body>
+</html>

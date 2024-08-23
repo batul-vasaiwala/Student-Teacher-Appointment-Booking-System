@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Students</title>
+    <link rel="stylesheet" href="manage_students.css">
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <!-- Firebase Authentication -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <!-- Firebase Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <!-- Firebase configuration -->
+    <script src="../public/firebase-config.js"></script>
+</head>
+<body>
+    <h2>Manage Students</h2>
+
+    <div id="message"></div>
+    
+    <div class="form-container">
+        <h3>Add / Update Student</h3>
+        <form id="studentForm">
+            <input type="hidden" id="studentId"> 
+            <label for="name">Name:</label>
+            <input type="text" id="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            
+            <label for="department">Department:</label>
+            <select id="department" name="department" required>
+                <option value="" disabled selected>Select your department</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Information Technology">Information Technology</option>
+                <option value="Electronics">Electronics</option>
+                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                <option value="Civil Engineering">Civil Engineering</option>
+                <option value="Electrical Engineering">Electrical Engineering</option>
+                <option value="Business Administration">Business Administration</option>
+                <option value="Humanities">Humanities</option>
+                <option value="Sciences">Sciences</option>
+                <option value="Arts">Arts</option>
+            </select>
+            
+                      <label for="yearOfStudy">Year of Study:</label>
+                      <select id="yearOfStudy" name="yearOfStudy" autocomplete="off" required>
+                          <option value="1">First Year</option>
+                          <option value="2">Second Year</option>
+                          <option value="3">Third Year</option>
+                          <option value="4">Fourth Year</option>
+                          <option value="5">High School</option>
+                          <option value="6">Secondary School</option>
+                      </select>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+
+    <h3>Student List</h3>
+    <table id="studentsTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Year of Study</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be dynamically generated here -->
+        </tbody>
+    </table>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const db = firebase.firestore();
+
+            // Load students from Firestore
+            function loadStudents() {
+                db.collection('students').get().then((querySnapshot) => {
+                    const tableBody = document.querySelector('#studentsTable tbody');
+                    tableBody.innerHTML = ''; // Clear existing rows
+
+                    querySnapshot.forEach((doc) => {
+                        const student = doc.data();
+                        const row = document.createElement('tr');
+
+                        row.innerHTML = `
+                            <td>${student.fullName}</td>
+                            <td>${student.email}</td>
+                            <td>${student.department}</td>
+                            <td>${student.yearOfStudy}</td>
+                            <td>
+                                <button onclick="editStudent('${doc.id}')">Edit</button>
+                                <button onclick="deleteStudent('${doc.id}')">Delete</button>
+                            </td>
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                }).catch((error) => {
+                    showMessage('Error loading students: ' + error.message, 'error');
+                });
+            }
+
+            // Show message
+            function showMessage(message, type) {
+                const messageElement = document.getElementById('message');
+                messageElement.textContent = message;
+                messageElement.style.color = type === 'success' ? 'green' : 'red';
+            }
+
+            // Add or update student
+            document.getElementById('studentForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const studentId = document.getElementById('studentId').value;
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const department = document.getElementById('department').value;
+                const yearOfStudy = document.getElementById('yearOfStudy').value;
+
+                if (!name || !email || !department || !yearOfStudy) {
+                    showMessage('Please fill in all fields.', 'error');
+                    return;
+                }
+
+                const studentData = {
+                    fullName: name,
+                    email: email,
+                    department: department,
+                    yearOfStudy: yearOfStudy,
+                };
+
+                if (studentId) {
+                    // Update student
+                    db.collection('students').doc(studentId).update(studentData).then(() => {
+                        showMessage('Student successfully updated!', 'success');
+                        loadStudents();
+                        document.getElementById('studentForm').reset();
+                        document.getElementById('studentId').value = '';
+                    }).catch((error) => {
+                        showMessage('Error updating student: ' + error.message, 'error');
+                    });
+                } else {
+                    // Add new student
+                    db.collection('students').add(studentData).then(() => {
+                        showMessage('Student successfully added!', 'success');
+                        loadStudents();
+                        document.getElementById('studentForm').reset();
+                    }).catch((error) => {
+                        showMessage('Error adding student: ' + error.message, 'error');
+                    });
+                }
+            });
+
+            // Edit student
+            window.editStudent = function(id) {
+                db.collection('students').doc(id).get().then((doc) => {
+                    if (doc.exists) {
+                        const student = doc.data();
+                        document.getElementById('studentId').value = id;
+                        document.getElementById('name').value = student.fullName;
+                        document.getElementById('email').value = student.email;
+                        document.getElementById('department').value = student.department;
+                        document.getElementById('yearOfStudy').value = student.yearOfStudy;
+                    }
+                }).catch((error) => {
+                    showMessage('Error fetching student data: ' + error.message, 'error');
+                });
+            }
+
+            // Delete student
+            window.deleteStudent = function(id) {
+                db.collection('students').doc(id).delete().then(() => {
+                    showMessage('Student successfully deleted!', 'success');
+                    loadStudents();
+                }).catch((error) => {
+                    showMessage('Error deleting student: ' + error.message, 'error');
+                });
+            }
+
+            // Load students on page load
+            loadStudents();
+        });
+    </script>
+</body>
+</html>

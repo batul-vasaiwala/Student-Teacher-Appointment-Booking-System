@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Appointments</title>
+    <link rel="stylesheet" href="manage_appointments.css">
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <!-- Firebase Authentication -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <!-- Firebase Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <!--  Firebase configuration -->
+    <script src="../public/firebase-config.js"></script>
+</head>
+<body>
+    <h2>Manage Appointments</h2>
+
+    <!-- Message element -->
+    <p id="message" style="color: green;"></p>
+
+    <table id="appointmentsTable">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Teacher Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Rows will be dynamically generated here -->
+        </tbody>
+    </table>
+
+    <script>
+        const db = firebase.firestore();
+
+        // Define the message element here
+        const messageElement = document.getElementById('message');
+
+        function loadAppointments() {
+            db.collection('appointments').get().then((querySnapshot) => {
+                const tableBody = document.querySelector('#appointmentsTable tbody');
+                tableBody.innerHTML = ''; 
+
+                querySnapshot.forEach(async (doc) => {
+                    const appointment = doc.data();
+
+                    const studentDoc = await db.collection('students').doc(appointment.studentID).get();
+                    const studentName = studentDoc.exists ? studentDoc.data().fullName : 'Unknown';
+
+                    const teacherDoc = await db.collection('teachers').doc(appointment.teacherID).get();
+                    const teacherName = teacherDoc.exists ? teacherDoc.data().fullName : 'Unknown';
+
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${studentName}</td>
+                        <td>${teacherName}</td>
+                        <td>${appointment.date}</td>
+                        <td>${appointment.time}</td>
+                        <td>${appointment.status}</td>
+                        <td>
+                            <button onclick="approveAppointment('${doc.id}')">Approve</button>
+                            <button onclick="rejectAppointment('${doc.id}')">Reject</button>
+                            <button onclick="deleteAppointment('${doc.id}')">Delete</button>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            });
+        }
+
+        function approveAppointment(appointmentId) {
+            db.collection('appointments').doc(appointmentId).update({
+                status: 'Approved'
+            }).then(() => {
+                loadAppointments();
+                showMessage('Appointment successfully approved.');
+            });
+        }
+
+        function rejectAppointment(appointmentId) {
+            db.collection('appointments').doc(appointmentId).update({
+                status: 'Rejected'
+            }).then(() => {
+                loadAppointments();
+                showMessage('Appointment successfully rejected.');
+            });
+        }
+
+        function deleteAppointment(appointmentId) {
+            db.collection('appointments').doc(appointmentId).delete().then(() => {
+                loadAppointments();
+                showMessage('Appointment successfully deleted.');
+            });
+        }
+
+        function showMessage(message) {
+            messageElement.textContent = message;
+            setTimeout(() => {
+                messageElement.textContent = '';
+            }, 6000); // Clear the message after 3 seconds
+        }
+
+        window.onload = loadAppointments;
+    </script>
+</body>
+</html>

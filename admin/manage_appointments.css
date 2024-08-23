@@ -1,0 +1,128 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffcc33, #ff33cc);
+    margin: 0;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    color: #080808;
+    margin-bottom: 20px;
+    font-size: 35px;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #090909;
+    color: rgb(246, 249, 65);
+}
+
+td {
+    color: #333;
+}
+
+/* Button Styles */
+button {
+    padding: 8px 16px;
+    margin: 0 4px;
+    border: none;
+    background-color: #f2f23c;
+    color: rgb(19, 18, 18);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #44cd44;
+}
+
+/* Message Styles */
+#message {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: rgb(47, 163, 65);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h2 {
+        font-size: 28px;
+    }
+
+    table {
+        font-size: 14px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    button {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    h2 {
+        font-size: 24px;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+
+    button {
+        padding: 4px 10px;
+        font-size: 12px;
+    }
+
+    #message {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 400px) {
+    h2 {
+        font-size: 20px;
+    }
+
+    table {
+        font-size: 10px;
+    }
+
+    th, td {
+        padding: 4px;
+    }
+
+    button {
+        padding: 2px 8px;
+        font-size: 10px;
+    }
+
+    #message {
+        font-size: 0.9em;
+    }
+}

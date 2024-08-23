@@ -1,0 +1,260 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Satisfy&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+/* General Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-image: linear-gradient(135deg, #ffcc33 0%, #ff33cc 100%);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  color: #333;
+  overflow-x: hidden;
+  background-attachment: fixed;
+}
+
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+  background-color: #040404;
+  box-shadow: 3px 3px 10px #1c4f82;
+  padding: 0 20px;
+  position: relative;
+  z-index: 2;
+
+}
+
+.navbar .app-name {
+  font-size: 40px;
+  padding: 10px 20px;
+  font-family: 'Satisfy', cursive;
+  color:yellow
+}
+
+/* Menu Styles */
+.navbar .menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar .menu li {
+  padding: 10px;
+  font-size: 30px;
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+.navbar .menu li a {
+  text-decoration: none;
+  color: #fbf8f8;
+  text-transform: uppercase;
+}
+
+.navbar .menu li a:hover {
+  color: rgb(239, 239, 246);
+  background-color: rgb(26, 25, 25);
+  padding: 2px;
+  text-decoration: underline;
+}
+
+/* Hamburger Icon Styles */
+.navbar .hamburger {
+  display: none; /* Hidden by default */
+  font-size: 24px;
+  color: #050504;
+  cursor: pointer;
+  background-color: #f4e56e;
+  z-index: 2;
+}
+
+/*========================Media Queries=========================*/
+@media (max-width: 768px) {
+  /* Show hamburger icon in mobile view */
+  .navbar {
+    width:90vw;
+  }
+  .navbar .hamburger {
+    display: block;
+  }
+
+  /* Hide menu by default on smaller screens */
+  .navbar .menu {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+    background-color: #0a0a0a;
+    color: white;
+    position: absolute;
+    top: 60px; /* Adjust this based on your navbar height */
+    left: 0;
+    box-shadow: 3px 3px 10px #1c4f82;
+  }
+
+  /* Show the menu when active */
+  .navbar .menu.menu-active {
+    display: flex;
+  }
+
+  .navbar .menu li {
+    width: 100%;
+    padding: 15px 0;
+    font-size: 20px;
+  }
+}
+
+
+/* Content Styles */
+h2 {
+  color: #fff;
+  font-size: 28px;
+  text-align: center;
+  margin: 120px 20px 40px; /* Adjusted for navbar height */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Form Styles */
+form {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  max-width: 100%;
+  margin: 20px auto;
+  box-sizing: border-box;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+input[type="date"],
+input[type="time"],
+select,
+textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #555;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+}
+
+input[type="date"]:focus,
+input[type="time"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #ff33cc;
+  outline: none;
+  box-shadow: 0 0 8px rgba(255, 51, 204, 0.5);
+}
+
+button[type="submit"] {
+  background-color: #ff33cc;
+  color: #fff;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-sizing: border-box;
+}
+
+button[type="submit"]:hover {
+  background-color: #cc28a1;
+  transform: translateY(-2px);
+}
+
+#confirmationMessage {
+  margin-top: 20px;
+  font-size: 18px;
+  color: #28a745;
+  text-align: center;
+  display: block;
+  background-color: #f1f8f2;
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Select Dropdown */
+select {
+  width: 100%; 
+  padding: 12px; 
+  margin-bottom: 20px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #555;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;  
+  background-color: #fff; 
+  appearance: none; 
+}
+
+/* Focus Styles */
+select:focus {
+  border-color: #ff33cc;
+  outline: none;
+  box-shadow: 0 0 8px rgba(255, 51, 204, 0.5);
+}
+
+/* Custom Dropdown Arrow */
+select::-ms-expand {
+  display: none; /* Remove the default arrow in IE */
+}
+
+/*========================Media Queries=========================*/
+@media (max-width: 768px) {
+ 
+
+  h2 {
+    font-size: 24px;
+    margin-top: 100px; /* Adjusted for mobile */
+  }
+
+  form {
+    padding: 20px;
+    max-width: 90%;
+  }
+
+  input[type="date"],
+  input[type="time"],
+  select,
+  textarea,
+  button[type="submit"] {
+    font-size: 14px;
+  }
+}
+@media (max-width: 768px) {
+  select {
+    font-size: 14px; 
+    padding: 10px; 
+  }
+}
+
+@media (max-width: 480px) {
+  select {
+    font-size: 10px; 
+    padding: 5px;   }
+}
