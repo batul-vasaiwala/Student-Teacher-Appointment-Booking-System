@@ -1,4 +1,4 @@
-// Ensure the Firebase configuration is imported and initialized
+
 const auth = firebase.auth();
 const db = firebase.firestore();
 
